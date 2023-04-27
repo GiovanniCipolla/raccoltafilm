@@ -51,7 +51,6 @@ public class PrepareEditFilmServlet extends HttpServlet {
 			Film filmIstance = filmService.caricaSingoloElemento(Long.parseLong(idFilmParam));
 
 			if (filmIstance == null) {
-
 				request.setAttribute("errorMessage", "Elemento non trovato.");
 				request.getRequestDispatcher("ExecuteListRegistaServlet?operationResult=NOT_FOUND").forward(request,
 						response);

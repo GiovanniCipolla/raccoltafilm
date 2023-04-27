@@ -70,9 +70,6 @@
 					  ${errorMessage}
 					  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
 					</div>
-					<div class="alert alert-warning alert-dismissible fade show ${errorMessage==null?'d-none':'' }" role="alert">
-					  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
-					</div>
 			  
 			  <div class='card'>
 				    <div class='card-header'>
@@ -80,44 +77,58 @@
 				    </div>
 				    <div class='card-body'>
 		
-							<form method="post" action="ExecuteEditFilmServlet" class="row g-3" >
+							<form method="post" action="ExecuteEditFilmServlet" class="row g-3" onsubmit="return validateForm()" >
 							
 								<input type="hidden" value="${edit_film_attr.id }" name="idFilm"></input>
 								<div class="col-md-6">
 									<label for="titolo" class="form-label">Titolo</label>
 									<input value="${edit_film_attr.titolo}" type="text" name="titolo" id="titolo" class="form-control" placeholder="Inserire il titolo" >
+								<div class="invalid-feedback">
+										Campo obbligatorio
+									</div>
 								</div>
 								
 								<div class="col-md-6">
 									<label for="genere" class="form-label">Genere</label>
 									<input value="${edit_film_attr.genere}" type="text" name="genere" id="genere" class="form-control" placeholder="Inserire il genere" >
+								<div class="invalid-feedback">
+										Campo obbligatorio
+									</div>
 								</div>
 							
 								<div class="col-md-6">
 									<label for="dataPubblicazione" class="form-label">Data di Pubblicazione</label>
 	                        		<input value="${edit_film_attr.dataPubblicazione}" class="form-control" id="dataPubblicazione" type="date" placeholder="dd/MM/yy" 
 	                        				title="formato : gg/mm/aaaa"  name="dataPubblicazione"  >
+								<div class="invalid-feedback">
+										Campo obbligatorio
+									</div>
 								</div>
 								
 								<div class="col-md-6">
 									<label for="minutiDurata" class="form-label">Durata (minuti)</label>
 									<input value="${edit_film_attr.minutiDurata}" type="number" class="form-control" name="minutiDurata" id="minutiDurata" placeholder="Inserire la durata" >
+								<div class="invalid-feedback">
+										Campo obbligatorio
+									</div>
 								</div>
 								
 								
 								<div class="col-md-6">
-									<label for="regista.id" class="form-label">Regista</label>
-								    <select class="form-select" id="regista.id" name="regista.id">
-								    	<option value="" selected> -- Selezionare una voce -- </option>
-								      	<c:forEach items="${edit_regista_attr }" var="registaItem">
-								      	
-								      		<option value="${registaItem.id}" ${registaItem.id == edit_film_attr.regista.id ?'selected':''} > ${registaItem.nome } ${registaItem.cognome }</option>
-								      	</c:forEach>
-								    </select>
-								</div>
+									  <label for="regista.id" class="form-label">Regista</label>
+									  <select class="form-select" id="regista.id" name="regista.id" required>
+									    <option value="" selected> -- Selezionare una voce -- </option>
+									    
+									    <c:forEach items="${edit_regista_attr }" var="registaItem">
+									    
+									      <option value="${registaItem.id}" ${registaItem.id == edit_film_attr.regista.id ?'selected':''} > ${registaItem.nome } ${registaItem.cognome }</option>
+									      
+									    </c:forEach>
+									  </select>
+									</div>
 								
 								<div class="col-12">
-									<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary">Conferma</button>
+									<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary"  >Conferma</button>
 								</div>
 								
 						</form>
