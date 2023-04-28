@@ -50,7 +50,7 @@
 					    	</dl>
 					    	
 					    	<dl class="row">
-							  <dt class="col-sm-3 text-right">Data Pubblicazione:</dt>
+							  <dt class="col-sm-3 text-right">Data di nascita:</dt>
 							  <dd class="col-sm-9">
 							  	<fmt:parseDate value="${delete_regista_attr.dataDiNascita}" pattern="yyyy-MM-dd" var="localDateToBeParsed" type="date"/>
 								<fmt:formatDate pattern="dd/MM/yyyy" value="${localDateToBeParsed}" />
@@ -61,7 +61,7 @@
 								<dt class="col-sm-3 text-right">Sesso:</dt>
 								<dd class="col-sm-9">${delete_regista_attr.sesso}</dd>
 							</dl>
-					    <!-- info Regista -->
+					    <!-- info Film -->
 					    	<p>
 							  <a class="btn btn-primary btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
 							    Info Films
@@ -90,15 +90,15 @@
 							    
 							    
 							  </div>
-							<!-- end info Regista -->
+							<!-- end info Film -->
 							</div>
 					    	</c:forEach>
 					    	
 					    <div class='card-footer'>
-					    	<form action="ExecuteDeleteRegistaServlet" method="post">
+					    	<form action="${pageContext.request.contextPath}/admin/ExecuteDeleteRegistaServlet" method="post">
 					    		<input type="hidden" name="idRegista" value="${delete_regista_attr.id}">
 						    	<button type="submit" name="submit" id="submit" class="btn btn-danger">Elimina</button>
-						        <a href="ExecuteListRegistaServlet" class='btn btn-outline-secondary' style='width:80px'>
+						        <a href="${pageContext.request.contextPath}/ExecuteListRegistaServlet" class='btn btn-outline-secondary' style='width:80px'>
 						            <i class='fa fa-chevron-left'></i> Back
 						        </a>
 					        </form>

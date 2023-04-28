@@ -11,15 +11,20 @@ import org.apache.commons.lang3.math.NumberUtils;
 
 import it.prova.raccoltafilm.exceptions.ElementNotFoundException;
 import it.prova.raccoltafilm.exceptions.RegistaHasFilmException;
+import it.prova.raccoltafilm.service.MyServiceFactory;
 import it.prova.raccoltafilm.service.RegistaService;
 
 /**
  * Servlet implementation class ExecuteDeleteRegistaServlet
  */
-@WebServlet("/ExecuteDeleteRegistaServlet")
+@WebServlet("/admin/ExecuteDeleteRegistaServlet")
 public class ExecuteDeleteRegistaServlet extends HttpServlet {
 	private RegistaService registaService;
-
+	
+	public ExecuteDeleteRegistaServlet() {
+		this.registaService = MyServiceFactory.getRegistaServiceInstance();
+	}
+	
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -51,6 +56,6 @@ public class ExecuteDeleteRegistaServlet extends HttpServlet {
 			return;
 		}
 
-		response.sendRedirect("ExecuteListRegistaServlet?operationResult=SUCCESS");
+		response.sendRedirect( request.getContextPath() + "/ExecuteListRegistaServlet?operationResult=SUCCESS");
 	}
 }

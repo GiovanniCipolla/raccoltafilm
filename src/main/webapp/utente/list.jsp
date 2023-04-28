@@ -36,34 +36,36 @@
 				    <div class='card-header'>
 				        <h5>Lista dei risultati</h5> 
 				    </div>
-				    <div class='card-body'>
-				    	<a class="btn btn-primary " href="PrepareInsertFilmServlet">Add New</a>
-				    
+				    <div class='card-body'>	    
 				        <div class='table-responsive'>
 				            <table class='table table-striped ' >
 				                <thead>
 				                    <tr>
-			                         	<th>Titolo</th>
-				                        <th>Genere</th>
-				                        <th>Data Pubblicazione</th>
-				                        <th>Durata (min.)</th>
-				                        <th>Azioni</th>
+			                         	<th>Username</th>
+				                        <th>Nome</th>
+				                        <th>Cognome</th>
+				                        <th>dateCreated</th>
+				                        <th>azioni</th>
+
 				                    </tr>
 				                </thead>
 				                <tbody>
-				                	<c:forEach items="${film_list_attribute }" var="filmItem">
+				                	<c:forEach items="${listUtenteAttribute }" var="utenteItem">
 										<tr>
-											<td>${filmItem.titolo }</td>
-											<td>${filmItem.genere }</td>
+											<td>${utenteItem.username }</td>
+											<td>${utenteItem.nome }</td>
+											<td>${utenteItem.cognome }</td>
 											<td>
-												<fmt:parseDate value="${filmItem.dataPubblicazione}" pattern="yyyy-MM-dd" var="localDateToBeParsed" type="date"/>
+												<fmt:parseDate value="${utenteItem.dateCreated}" pattern="yyyy-MM-dd" var="localDateToBeParsed" type="date"/>
 												<fmt:formatDate pattern="dd/MM/yyyy" value="${localDateToBeParsed}" />
 											</td>
-											<td>${filmItem.minutiDurata }</td>
 											<td>
-												<a class="btn  btn-sm btn-outline-secondary" href="${pageContext.request.contextPath}/ExecuteVisualizzaFilmServlet?idFilm=${filmItem.id }">Visualizza</a>
-												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="${pageContext.request.contextPath}/PrepareEditFilmServlet?idFilm=${filmItem.id }">Edit</a>
-												<a class="btn btn-outline-danger btn-sm" href="${pageContext.request.contextPath}/PrepareDeleteFilmServlet?idFilm=${filmItem.id }">Delete</a>
+												<a class="btn  btn-sm btn-outline-secondary" href="${pageContext.request.contextPath}/ExecuteDettaglioUtenteServlet?idUtente=${utenteItem.id }">Visualizza</a>
+												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="${pageContext.request.contextPath}/PrepareEditFilmServlet?idUtente=${utenteItem.id }">Edit</a>
+												<a class="btn btn-outline-danger btn-sm" href="${pageContext.request.contextPath}/PrepareDeleteFilmServlet?idUtente=${utenteItem.id }">Delete</a>
+											</td>
+											<td>
+											
 											</td>
 										</tr>
 									</c:forEach>

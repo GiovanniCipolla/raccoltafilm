@@ -14,7 +14,7 @@ import it.prova.raccoltafilm.exceptions.ElementNotFoundException;
 import it.prova.raccoltafilm.service.FilmService;
 import it.prova.raccoltafilm.service.MyServiceFactory;
 
-@WebServlet("/ExecuteDeleteFilmServlet")
+@WebServlet("/admin/ExecuteDeleteFilmServlet")
 public class ExecuteDeleteFilmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

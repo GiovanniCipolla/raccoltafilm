@@ -10,12 +10,12 @@
 					var genere = document.getElementById("genere");
 					var dataPubblicazione = document.getElementById("dataPubblicazione");
 					var minutiDurata = document.getElementById("minutiDurata");
-					var regista = document.getElementById("regista");
 					var formIsValid = true;
 			
 					if (titolo.value === "") {
 						titolo.classList.add("is-invalid");
 						formIsValid = false;
+						
 					} else {
 						titolo.classList.remove("is-invalid");
 					}
@@ -38,13 +38,6 @@
 						formIsValid = false;
 					} else {
 						minutiDurata.classList.remove("is-invalid");
-					}
-			
-					if (regista.value === "") {
-						regista.classList.add("is-invalid");
-						formIsValid = false;
-					} else {
-						regista.classList.remove("is-invalid");
 					}
 			
 					return formIsValid;

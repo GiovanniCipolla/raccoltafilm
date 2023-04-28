@@ -56,8 +56,7 @@ public class ExecuteEditRegistaServlet extends HttpServlet {
 		// andiamo ai risultati
 		// uso il sendRedirect con parametro per evitare il problema del double save on
 		// refresh
-		response.sendRedirect("ExecuteListRegistaServlet?operationResult=SUCCESS");
-		
+		response.sendRedirect( request.getContextPath() + "/ExecuteListRegistaServlet?operationResult=SUCCESS");
 	}
 
 }

@@ -14,7 +14,7 @@ import it.prova.raccoltafilm.model.Film;
 import it.prova.raccoltafilm.service.FilmService;
 import it.prova.raccoltafilm.service.MyServiceFactory;
 
-@WebServlet("/PrepareDeleteFilmServlet")
+@WebServlet("/admin/PrepareDeleteFilmServlet")
 public class PrepareDeleteFilmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
