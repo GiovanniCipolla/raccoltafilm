@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import it.prova.raccoltafilm.dao.RegistaDAO;
+import it.prova.raccoltafilm.exceptions.ElementNotFoundException;
+import it.prova.raccoltafilm.exceptions.RegistaHasFilmException;
 import it.prova.raccoltafilm.model.Regista;
 import it.prova.raccoltafilm.web.listener.LocalEntityManagerFactoryListener;
 
@@ -59,8 +61,21 @@ public class RegistaServiceImpl implements RegistaService {
 
 	@Override
 	public Regista caricaSingoloElementoConFilms(Long id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			// uso l'injection per il dao
+			registaDAO.setEntityManager(entityManager);
+
+			// eseguo quello che realmente devo fare
+			return registaDAO.findByIdEager(id);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
 	}
 
 	@Override
@@ -115,7 +130,34 @@ public class RegistaServiceImpl implements RegistaService {
 
 	@Override
 	public void rimuovi(Long idRegista) throws Exception {
-		// TODO Auto-generated method stub
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+		try {
+
+			entityManager.getTransaction().begin();
+
+			// injection
+			registaDAO.setEntityManager(entityManager);
+			
+			
+			Regista registaToRemove = registaDAO.findByIdEager(idRegista);
+			if (registaToRemove == null)
+				throw new ElementNotFoundException("Film con id: " + idRegista + " non trovato.");
+			
+			if (registaToRemove.getFilms().size() > 0) {
+				throw new RegistaHasFilmException("Attenzione: non si pouò rimuovere se il regista ha fatto dei film");
+			}
+
+			registaDAO.delete(registaToRemove);
+
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
+
 
 	}
 
@@ -138,5 +180,9 @@ public class RegistaServiceImpl implements RegistaService {
 			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
 		}
 	}
+
+	
+	
+	
 
 }

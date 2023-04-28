@@ -19,5 +19,6 @@ public interface IBaseDAO<T> {
 
 	// questo mi serve per l'injection
 	public void setEntityManager(EntityManager entityManager);
-
+	
+	
 }

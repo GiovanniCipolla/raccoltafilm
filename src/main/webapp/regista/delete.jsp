@@ -26,11 +26,44 @@
 					    
 					
 					    <div class='card-body'>
-						DA IMPLEMENTARE!!!!					    	
-					    <!-- end card body -->
-					    </div>
+					<dl class="row">
+							  <dt class="col-sm-3 text-right">Id:</dt>
+							  <dd class="col-sm-9">${delete_regista_attr.id}</dd>
+					    	</dl>
+					    	
+					    	<dl class="row">
+							  <dt class="col-sm-3 text-right">Titolo:</dt>
+							  <dd class="col-sm-9">${delete_regista_attr.nome}</dd>
+					    	</dl>
+					    	
+					    	<dl class="row">
+							  <dt class="col-sm-3 text-right">Genere:</dt>
+							  <dd class="col-sm-9">${delete_regista_attr.cognome}</dd>
+					    	</dl>
+					    	
+					    	<dl class="row">
+							  <dt class="col-sm-3 text-right">Genere:</dt>
+							  <dd class="col-sm-9">${delete_regista_attr.nickName}</dd>
+					    	</dl>
+					    	
+					    	<dl class="row">
+							  <dt class="col-sm-3 text-right">Data Pubblicazione:</dt>
+							  <dd class="col-sm-9">
+							  	<fmt:parseDate value="${delete_regista_attr.dataDiNascita}" pattern="yyyy-MM-dd" var="localDateToBeParsed" type="date"/>
+								<fmt:formatDate pattern="dd/MM/yyyy" value="${localDateToBeParsed}" />
+							  </dd>
+					    	</dl>
+					    	
+					    	<dl class="row">
+								<dt class="col-sm-3 text-right">Sesso:</dt>
+								<dd class="col-sm-9">${delete_regista_attr.sesso}</dd>
+							</dl>
 					    
 					    <div class='card-footer'>
+					    
+					        <a href="${pageContext.request.contextPath}/ExecuteDeleteRegistaServlet?idRegista=${registaItem.id }" class='btn btn-outline-secondary' style='width:80px'>
+					            <i class='fa fa-chevron-left'></i> Elimina
+					        </a>
 					        <a href="${pageContext.request.contextPath}/ExecuteListRegistaServlet" class='btn btn-outline-secondary' style='width:80px'>
 					            <i class='fa fa-chevron-left'></i> Back
 					        </a>
@@ -41,7 +74,7 @@
 			    
 			  <!-- end container -->  
 			  </div>
-			  
+			  </div>
 			</main>
 			
 			<!-- Footer -->

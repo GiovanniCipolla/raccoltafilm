@@ -20,6 +20,7 @@ public interface RegistaService {
 	public void rimuovi(Long idRegista) throws Exception;
 	
 	public List<Regista> findByExample(Regista example) throws Exception;
+	
 
 	//per injection
 	public void setRegistaDAO(RegistaDAO registaDAO);
