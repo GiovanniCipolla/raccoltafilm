@@ -2,6 +2,54 @@
 <!doctype html>
 <html lang="it" class="h-100" >
 	 <head>
+	 <script>
+		
+				function validateForm() {
+					var nome = document.getElementById("nome");
+					var cognome = document.getElementById("cognome");
+					var nickName = document.getElementById("nickName");
+					var dataDiNascita = document.getElementById("dataDiNascita");
+					var sesso = document.getElementById("sesso");
+					var formIsValid = true;
+			
+					if (nome.value === "") {
+						nome.classList.add("is-invalid");
+						formIsValid = false;
+					} else {
+						nome.classList.remove("is-invalid");
+					}
+			
+					if (cognome.value === "") {
+						cognome.classList.add("is-invalid");
+						formIsValid = false;
+					} else {
+						cognome.classList.remove("is-invalid");
+					}
+			
+					if (nickName.value === "") {
+						nickName.classList.add("is-invalid");
+						formIsValid = false;
+					} else {
+						nickName.classList.remove("is-invalid");
+					}
+					if (sesso.value === "") {
+						sesso.classList.add("is-invalid");
+						formIsValid = false;
+					} else {
+						sesso.classList.remove("is-invalid");
+					}
+			
+					if (dataDiNascita.value === "") {
+						dataDiNascita.classList.add("is-invalid");
+						formIsValid = false;
+					} else {
+						dataDiNascita.classList.remove("is-invalid");
+					}
+			
+					return formIsValid;
+				}
+				
+			</script> 
 	 
 	 	<!-- Common imports in pages -->
 	 	<jsp:include page="../header.jsp" />
@@ -40,22 +88,31 @@
 							<h6 class="card-title">I campi con <span class="text-danger">*</span> sono obbligatori</h6>
 		
 		
-							<form method="post" action="ExecuteInsertRegistaServlet" class="row g-3" novalidate="novalidate">
+							<form method="post" action="ExecuteInsertRegistaServlet" class="row g-3" novalidate="novalidate" onsubmit="return validateForm()">
 							
 							
 								<div class="col-md-6">
 									<label for="nome" class="form-label">Nome <span class="text-danger">*</span></label>
 									<input type="text" name="nome" id="nome" class="form-control" placeholder="Inserire il nome" value="${insert_regista_attr.nome }" required>
+								<div class="invalid-feedback">
+										Campo obbligatorio
+									</div>
 								</div>
 								
 								<div class="col-md-6">
 									<label for="cognome" class="form-label">Cognome <span class="text-danger">*</span></label>
 									<input type="text" name="cognome" id="cognome" class="form-control" placeholder="Inserire il cognome" value="${insert_regista_attr.cognome }" required>
+								<div class="invalid-feedback">
+										Campo obbligatorio
+									</div>
 								</div>
 							
 								<div class="col-md-6">
 									<label for="nickName" class="form-label">Nickname <span class="text-danger">*</span></label>
 									<input type="text" class="form-control" name="nickName" id="nickName" placeholder="Inserire il nickname" value="${insert_regista_attr.nickName }" required>
+								<div class="invalid-feedback">
+										Campo obbligatorio
+									</div>
 								</div>
 								
 								<fmt:parseDate value="${insert_regista_attr.dataDiNascita}" pattern="yyyy-MM-dd" var="localDateToBeParsed" type="date"/>
@@ -64,6 +121,9 @@
 									<label for="dataDiNascita" class="form-label">Data di Nascita <span class="text-danger">*</span></label>
                         			<input class="form-control" id="dataDiNascita" type="date" placeholder="dd/MM/yy"
                             			title="formato : gg/mm/aaaa"  name="dataDiNascita" required value="${parsedDate}" >
+								<div class="invalid-feedback">
+										Campo obbligatorio
+									</div>
 								</div>
 								
 								<div class="col-md-3">
@@ -73,6 +133,9 @@
 								      	<option value="MASCHIO" ${insert_regista_attr.sesso == 'MASCHIO'?'selected':''} >M</option>
 								      	<option value="FEMMINA" ${insert_regista_attr.sesso == 'FEMMINA'?'selected':''} >F</option>
 								    </select>
+								<div class="invalid-feedback">
+										Campo obbligatorio
+									</div>
 								</div>
 								
 								

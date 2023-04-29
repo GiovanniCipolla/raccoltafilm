@@ -4,6 +4,48 @@
 <html lang="it" class="h-100" >
 	 <head>
 	 
+	 <script>
+		
+				function validateForm() {
+					var titolo = document.getElementById("titolo");
+					var genere = document.getElementById("genere");
+					var dataPubblicazione = document.getElementById("dataPubblicazione");
+					var minutiDurata = document.getElementById("minutiDurata");
+					var formIsValid = true;
+			
+					if (titolo.value === "") {
+						titolo.classList.add("is-invalid");
+						formIsValid = false;
+						
+					} else {
+						titolo.classList.remove("is-invalid");
+					}
+			
+					if (genere.value === "") {
+						genere.classList.add("is-invalid");
+						formIsValid = false;
+					} else {
+						genere.classList.remove("is-invalid");
+					}
+			
+					if (dataPubblicazione.value === "") {
+						dataPubblicazione.classList.add("is-invalid");
+						formIsValid = false;
+					} else {
+						dataPubblicazione.classList.remove("is-invalid");
+					}
+					if (minutiDurata.value === "") {
+						minutiDurata.classList.add("is-invalid");
+						formIsValid = false;
+					} else {
+						minutiDurata.classList.remove("is-invalid");
+					}
+			
+					return formIsValid;
+				}
+				
+			</script> 
+	 
 	 	<!-- Common imports in pages -->
 	 	<jsp:include page="../header.jsp" />
 	   
@@ -33,17 +75,23 @@
 							<h6 class="card-title">I campi con <span class="text-danger">*</span> sono obbligatori</h6>
 		
 		
-							<form method="post" action="${pageContext.request.contextPath}/ExecuteInsertFilmServlet" class="row g-3" novalidate="novalidate">
+							<form method="post" action="${pageContext.request.contextPath}/ExecuteInsertFilmServlet" class="row g-3" novalidate="novalidate" onsubmit="return validateForm()">
 							
 							
 								<div class="col-md-6">
 									<label for="titolo" class="form-label">Titolo <span class="text-danger">*</span></label>
 									<input type="text" name="titolo" id="titolo" class="form-control" placeholder="Inserire il titolo" value="${insert_film_attr.titolo }">
+								<div class="invalid-feedback">
+										Campo obbligatorio 
+									</div>
 								</div>
 								
 								<div class="col-md-6">
 									<label for="genere" class="form-label">Genere <span class="text-danger">*</span></label>
 									<input type="text" name="genere" id="genere" class="form-control" placeholder="Inserire il genere" value="${insert_film_attr.genere }">
+								<div class="invalid-feedback">
+										Campo obbligatorio 
+									</div>
 								</div>
 							
 								<fmt:parseDate value="${insert_film_attr.dataPubblicazione}" pattern="yyyy-MM-dd" var="localDateToBeParsed" type="date"/>
@@ -52,11 +100,17 @@
 									<label for="dataPubblicazione" class="form-label">Data di Pubblicazione <span class="text-danger">*</span></label>
 	                        		<input class="form-control" id="dataPubblicazione" type="date" placeholder="dd/MM/yy" 
 	                        				title="formato : gg/mm/aaaa"  name="dataPubblicazione" value="${parsedDate}" >
+								<div class="invalid-feedback">
+										Campo obbligatorio 
+									</div>
 								</div>
 								
 								<div class="col-md-6">
 									<label for="minutiDurata" class="form-label">Durata (minuti) <span class="text-danger">*</span></label>
 									<input type="number" class="form-control" name="minutiDurata" id="minutiDurata" placeholder="Inserire la durata" value="${insert_film_attr.minutiDurata }">
+								<div class="invalid-feedback">
+										Campo obbligatorio 
+									</div>
 								</div>
 								
 								

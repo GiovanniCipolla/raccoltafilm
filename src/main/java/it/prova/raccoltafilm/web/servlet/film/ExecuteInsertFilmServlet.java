@@ -47,7 +47,7 @@ public class ExecuteInsertFilmServlet extends HttpServlet {
 				request.setAttribute("insert_film_attr", filmInstance);
 				// questo mi serve per la select di registi in pagina
 				request.setAttribute("registi_list_attribute", registaService.listAllElements());
-				request.setAttribute("errorMessage", "Attenzione sono presenti errori di validazione");
+				request.setAttribute("errorMessage", "Attenzione sono presenti errori di validazione, inserire un regista");
 				request.getRequestDispatcher("/film/insert.jsp").forward(request, response);
 				return;
 			}

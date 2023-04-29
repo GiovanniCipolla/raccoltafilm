@@ -90,6 +90,7 @@
 			
 								<h6 class="card-title">I campi con <span class="text-danger">*</span> sono obbligatori</h6>
 			
+								<c:set var="registaOriginale" value="${requestScope.registaDaAggiornare}" />
 			
 								<form method="post" action="ExecuteEditRegistaServlet" class="row g-3" novalidate="novalidate" onsubmit="return validateForm()" >
 								
@@ -100,7 +101,7 @@
 										<input type="text" name="nome" id="nome" class="form-control"
 											value="${registaInPagina.nome}" required>
 									<div class="invalid-feedback">
-										Campo obbligatorio
+										Campo obbligatorio<br> <p style="color: blue;">  originale :  ${registaOriginale.nome}</p>
 									</div>
 									</div>
 								
@@ -109,7 +110,7 @@
 										<input type="text" name="cognome" id="cognome" class="form-control"   
 											value="<c:out value="${registaInPagina.cognome}" />" required>
 									<div class="invalid-feedback">
-										Campo obbligatorio
+										Campo obbligatorio<br> <p style="color: blue;"> originale :  ${registaOriginale.cognome} </p>
 									</div>
 									</div>
 									
@@ -118,7 +119,7 @@
 										<input type="text" name="nickName" id="nickName" class="form-control"   
 											value="<c:out value="${registaInPagina.nickName}" />" required>
 									<div class="invalid-feedback">
-										Campo obbligatorio
+										Campo obbligatorio <br><p style="color: blue;"> originale :  ${registaOriginale.nickName} </p>
 									</div>
 									</div>
 								

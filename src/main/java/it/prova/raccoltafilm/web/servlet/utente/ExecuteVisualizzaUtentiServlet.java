@@ -15,7 +15,7 @@ import it.prova.raccoltafilm.utility.UtilityForm;
 /**
  * Servlet implementation class ExecuteVisualizzaUtentiServlet
  */
-@WebServlet("/ExecuteVisualizzaUtenteServlet")
+@WebServlet("/admin/ExecuteVisualizzaUtenteServlet")
 public class ExecuteVisualizzaUtentiServlet extends HttpServlet {
 	private UtenteService utenteService;
 	private static final long serialVersionUID = 1L;
@@ -24,7 +24,7 @@ public class ExecuteVisualizzaUtentiServlet extends HttpServlet {
 		this.utenteService = MyServiceFactory.getUtenteServiceInstance();
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String usernameParam = request.getParameter("username");
 		String nomeParam = request.getParameter("nome");
 		String cognomeParam = request.getParameter("cognome");
@@ -42,6 +42,12 @@ public class ExecuteVisualizzaUtentiServlet extends HttpServlet {
 			return;
 		}
 		request.getRequestDispatcher("/utente/list.jsp").forward(request, response);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 }

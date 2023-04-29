@@ -17,7 +17,7 @@ import it.prova.raccoltafilm.service.UtenteService;
 /**
  * Servlet implementation class ExecuteDettaglioUtenteServlet
  */
-@WebServlet("/ExecuteDettaglioUtenteServlet")
+@WebServlet("/admin/ExecuteDettaglioUtenteServlet")
 public class ExecuteDettaglioUtenteServlet extends HttpServlet {
 	
 	private UtenteService utenteService;

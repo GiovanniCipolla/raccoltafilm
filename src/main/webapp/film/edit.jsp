@@ -69,7 +69,7 @@
 				        <h5>Modifica film</h5> 
 				    </div>
 				    <div class='card-body'>
-		
+							<c:set var="filmOriginale" value="${requestScope.edit_film_attr}" />
 							<form method="post" action="ExecuteEditFilmServlet" class="row g-3" onsubmit="return validateForm()" >
 							
 								<input type="hidden" value="${edit_film_attr.id }" name="idFilm"></input>
@@ -77,7 +77,7 @@
 									<label for="titolo" class="form-label">Titolo</label>
 									<input value="${edit_film_attr.titolo}" type="text" name="titolo" id="titolo" class="form-control" placeholder="Inserire il titolo" >
 								<div class="invalid-feedback">
-										Campo obbligatorio
+										Campo obbligatorio <br><p style="color: blue;"> originale :  ${filmOriginale.titolo} </p>
 									</div>
 								</div>
 								
@@ -85,7 +85,7 @@
 									<label for="genere" class="form-label">Genere</label>
 									<input value="${edit_film_attr.genere}" type="text" name="genere" id="genere" class="form-control" placeholder="Inserire il genere" >
 								<div class="invalid-feedback">
-										Campo obbligatorio
+										Campo obbligatorio <br><p style="color: blue;"> originale :  ${filmOriginale.genere} </p>
 									</div>
 								</div>
 							
@@ -94,7 +94,7 @@
 	                        		<input value="${edit_film_attr.dataPubblicazione}" class="form-control" id="dataPubblicazione" type="date" placeholder="dd/MM/yy" 
 	                        				title="formato : gg/mm/aaaa"  name="dataPubblicazione"  >
 								<div class="invalid-feedback">
-										Campo obbligatorio
+										Campo obbligatorio <br><p style="color: blue;"> originale :  ${filmOriginale.dataPubblicazione} </p>
 									</div>
 								</div>
 								
@@ -102,7 +102,7 @@
 									<label for="minutiDurata" class="form-label">Durata (minuti)</label>
 									<input value="${edit_film_attr.minutiDurata}" type="number" class="form-control" name="minutiDurata" id="minutiDurata" placeholder="Inserire la durata" >
 								<div class="invalid-feedback">
-										Campo obbligatorio
+										Campo obbligatorio <br><p style="color: blue;"> originale :  ${filmOriginale.minutiDurata} </p>
 									</div>
 								</div>
 								

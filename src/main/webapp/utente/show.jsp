@@ -71,7 +71,7 @@
 					    	</dl>
 				</div>			    	
 				<div class='card-footer'>
-					<a href="ExecuteListRegistaServlet"
+					<a href="${pageContext.request.contextPath}/admin/ExecuteVisualizzaUtenteServlet"
 						class='btn btn-outline-secondary' style='width: 80px'> <i
 						class='fa fa-chevron-left'></i> Back
 					</a>
